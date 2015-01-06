@@ -746,7 +746,7 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
     
     if(a.getActionCommand().equals("500%"))
     {
-      this.zoom(5.0);
+      this.zoom(10.0);
       enableZoomItems();
       fiveHundred.setEnabled(false);
     }
@@ -800,7 +800,7 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
    */
   public static void main( String args[])
   {
-    Picture pix = new Picture("beach.jpg");
+    Picture pix = new Picture("images.jpg");
     pix.explore();
   }
   
