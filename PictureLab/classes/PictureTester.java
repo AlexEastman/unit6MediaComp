@@ -20,7 +20,7 @@ public class PictureTester
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
-    Picture caterpillar = new Picture("caterpillar.jpg");
+    Picture caterpillar = new Picture("images.jpg");
     caterpillar.explore();
     caterpillar.mirrorVertical();
     caterpillar.explore();
@@ -51,6 +51,28 @@ public class PictureTester
     swan.explore();
   }
   
+  public static void testMirrorVerticalRightToLeft()
+  {
+      Picture picture = new Picture("images.jpg");
+      picture.mirrorVerticalRightToLeft();
+      picture.explore();
+  }
+  
+  public static void testMirrorHorizontal()
+  {
+      Picture picture = new Picture("images.jpg");
+      picture.mirrorHorizontal();
+      picture.explore();
+  }
+  
+  public static void testAlex()
+  {
+      Picture picture = new Picture("images.jpg");
+      picture.mirrorHorizontal();
+      picture.mirrorVerticalRightToLeft();
+      picture.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -58,7 +80,8 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testZeroBlue();
+    testAlex();
+    //testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
@@ -80,5 +103,7 @@ public class PictureTester
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
+    //testMirrorVerticalRightToLeft();
+    //testMirrorHorizontal();
   }
 }
