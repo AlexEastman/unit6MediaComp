@@ -34,6 +34,97 @@ public class Picture extends SimplePicture
     } 
   }
   
+  public void posterize(int bins)
+  {
+      Pixel pixel = null;
+      int r,g,b;
+      for (int x = 0; x < this.getWidth(); x++)
+      {
+          for (int y = 0; y < this.getHeight(); y++)
+          {
+              pixel = getPixel(x,y);
+              Color color1 = pixel.getColor();
+              r = color1.getRed();
+              g = color1.getGreen();
+              b = color1.getBlue();
+              
+              r = subPosterize(r,bins);
+              g = subPosterize(g,bins);
+              b = subPosterize(b,bins);
+                
+              Color color2 = new Color(r,g,b);
+              pixel.setColor(color2);
+          }
+      }
+  }
+  
+  public int subPosterize(int c, int bins)// repeat code for all 3 color values put here
+  {
+      double binSize = 256.0/bins;// 256 values split into bins segments of binSize
+      int bin =(int) (c/binSize);// finds the index of the bin from 0 to bins
+      c = (int)((bin+.5)*binSize-1);// finds the color value of midpoint of a known bin
+      return c;
+  }
+  
+  public void grayScale()
+  {
+      Pixel pixel = null;
+      int r,g,b,grey;
+      for (int x = 0; x < this.getWidth(); x++)
+      {
+          for (int y = 0; y < this.getHeight(); y++)
+          {
+              pixel = getPixel(x,y);
+              Color color1 = pixel.getColor();
+              r = color1.getRed();
+              g = color1.getGreen();
+              b = color1.getBlue();
+              grey = (r+g+b)/3;
+              
+              Color color2 = new Color(grey,grey,grey);
+              pixel.setColor(color2);
+              
+          }
+      }
+  }
+  
+  public void sepia()
+  {
+      Pixel pixel = null;
+      int r,g,b;
+      grayScale();
+      for (int x = 0; x < this.getWidth(); x++)
+      {
+          for (int y = 0; y < this.getHeight(); y++)
+          {
+              pixel = getPixel(x,y);
+              Color color1 = pixel.getColor();
+              r = color1.getRed();
+              g = color1.getGreen();
+              b = color1.getBlue();
+              
+              if(r <60)
+              {
+                  r = (int) (.9*r);
+                  g = (int) (.9*g);
+                  b = (int) (.9*b);
+              }
+              else if(r<190)
+              {
+                  b = (int) (.8*b);
+              }
+              else
+              {
+                  b = (int) (.9*b);
+              }
+              
+              Color color2 = new Color(r,g,b);
+              pixel.setColor(color2);
+              
+          }
+      }
+  }
+  
   public void mirrorHorizontal()
   {
     Pixel[][] pixels = this.getPixels2D();

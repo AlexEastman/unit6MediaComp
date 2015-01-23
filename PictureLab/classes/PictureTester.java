@@ -17,6 +17,20 @@ public class PictureTester
     beach.explore();
   }
   
+  public static void testPosterize()
+  {
+      Picture picture = new Picture("beach.jpg");
+      picture.posterize(4);
+      picture.explore();
+  }
+  
+  public static void testSepia()
+  {
+      Picture picture = new Picture("gorge.jpg");
+      picture.sepia();
+      picture.explore();
+  }
+  
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
@@ -80,7 +94,9 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testAlex();
+    testPosterize();
+    //testSepia();
+    //testAlex();
     //testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
