@@ -19,7 +19,7 @@ public class PictureTester
   
   public static void testPosterize()
   {
-      Picture picture = new Picture("beach.jpg");
+      Picture picture = new Picture("dillon.jpg");
       picture.posterize(4);
       picture.explore();
   }
@@ -52,9 +52,27 @@ public class PictureTester
   /** Method to test the collage method */
   public static void testCollage()
   {
-    Picture canvas = new Picture("640x480.jpg");
+    Picture canvas = new Picture(804, 826);
     canvas.createCollage();
+    
+    
+    Picture originalPic = new Picture("dillon.jpg");
+    Picture sepiaPic = new Picture("dillon.jpg");
+    Picture posterizePic = new Picture("dillon.jpg");
+    Picture mirroredPic = new Picture("dillon.jpg");
+    
+    sepiaPic.sepia();
+    posterizePic.posterize(4);
+    mirroredPic.mirrorHorizontal();
+    mirroredPic.mirrorVerticalRightToLeft();
+    
+    canvas.copy(originalPic,0,0);
+    canvas.copy(sepiaPic,402,0);
+    canvas.copy(posterizePic,0,413);
+    canvas.copy(mirroredPic,402,413);
+    
     canvas.explore();
+    canvas.write("MyCollage.jpg");
   }
   
   /** Method to test edgeDetection */
